@@ -1,6 +1,7 @@
 name: lents_cli
-description: A sample command-line application with basic argument parsing.
-version: 0.1.0
+description: >
+  A command-line tool for creating files and directories in Dart and Flutter projects.
+version: 0.2.0
 repository: https://github.com/lentscode/lents_cli
 
 environment:
