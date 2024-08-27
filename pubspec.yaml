@@ -1,7 +1,7 @@
 name: lents_cli
 description: >
   A command-line tool for creating files and directories in Dart and Flutter projects.
-version: 0.2.0
+version: 0.3.0
 repository: https://github.com/lentscode/lents_cli
 
 environment:
