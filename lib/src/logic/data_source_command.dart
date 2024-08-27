@@ -52,6 +52,6 @@ class DataSourceCommand extends Command<String> {
         ""
       ].join("\n"),
     );
-    return "Model file created at $dataSourcePath";
+    return "DataSource file created at $dataSourcePath";
   }
 }
