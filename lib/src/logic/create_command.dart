@@ -7,6 +7,7 @@ class CreateCommand extends Command<String> {
     addSubcommand(ModelCommand());
     addSubcommand(UseCaseCommand());
     addSubcommand(DataSourceCommand());
+    addSubcommand(ExceptionCommand());
   }
 
   @override

@@ -7,6 +7,7 @@ import "package:args/command_runner.dart";
 
 part "create_command.dart";
 part "data_source_command.dart";
+part "exception_command.dart";
 part "model_command.dart";
 part "use_case_command.dart";
 
