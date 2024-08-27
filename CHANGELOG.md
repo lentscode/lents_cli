@@ -6,3 +6,6 @@
 
 - Added new DataSourceCommand
 
+## 0.3.0
+
+- Added new ExceptionCommand
