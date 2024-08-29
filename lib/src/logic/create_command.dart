@@ -8,6 +8,7 @@ class CreateCommand extends Command<String> {
     addSubcommand(UseCaseCommand());
     addSubcommand(DataSourceCommand());
     addSubcommand(ExceptionCommand());
+    addSubcommand(RouteCommand());
   }
 
   @override

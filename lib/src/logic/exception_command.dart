@@ -32,7 +32,7 @@ class ExceptionCommand extends Command<String> {
           "",
           "class ${exceptionName}Exception implements Exception {}",
         ].join("\n"),
-        mode: FileMode.writeOnlyAppend,
+        mode: FileMode.append,
       );
     }
 
