@@ -16,8 +16,10 @@ part "use_case_command.dart";
 String baseDirectory = "${Directory.current.path}/lib/src";
 
 extension _PrivateExtensions on Command {
-  String _getPath(String folder, String name) =>
-      "$baseDirectory/$folder/$name/$name.dart";
+  String _getPath(String folder, String name, {bool requiresImpl = true}) =>
+      requiresImpl
+          ? "$baseDirectory/$folder/$name/$name.dart"
+          : "$baseDirectory/$folder/$name.dart";
 
   String _getImplPath(String folder, String name) =>
       "$baseDirectory/$folder/$name/$name.impl.dart";
