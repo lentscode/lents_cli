@@ -5,7 +5,7 @@ import "dart:io";
 
 import "package:args/command_runner.dart";
 
-part "create_command.dart";
+part "cubit_command.dart";
 part "data_source_command.dart";
 part "exception_command.dart";
 part "model_command.dart";
@@ -16,13 +16,22 @@ part "use_case_command.dart";
 String baseDirectory = "${Directory.current.path}/lib/src";
 
 extension _PrivateExtensions on Command {
-  String _getPath(String folder, String name, {bool requiresImpl = true}) =>
+  String _getPath(
+    String folder,
+    String name, {
+    bool requiresImpl = true,
+    String? superFolder,
+  }) =>
       requiresImpl
-          ? "$baseDirectory/$folder/$name/$name.dart"
+          ? "$baseDirectory/$folder/${superFolder ?? name}/$name.dart"
           : "$baseDirectory/$folder/$name.dart";
 
-  String _getImplPath(String folder, String name) =>
-      "$baseDirectory/$folder/$name/$name.impl.dart";
+  String _getImplPath(
+    String folder,
+    String name, {
+    String? superFolder,
+  }) =>
+      "$baseDirectory/$folder/${superFolder ?? name}/$name.impl.dart";
 
   String _getLibPath(String folder) => "$baseDirectory/$folder/$folder.dart";
 

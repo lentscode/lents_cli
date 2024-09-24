@@ -14,3 +14,12 @@
 
 - Added new UseCaseCommand and RouteCommand
 - Updated other commands
+
+## 0.4.1
+
+- Updated UseCaseCommand
+
+## 0.5.0
+
+- Added CubitCommand
+- Updated other commands

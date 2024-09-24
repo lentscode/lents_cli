@@ -15,7 +15,11 @@ class RouteCommand extends Command<String> {
     final String routeName = _camelToPascalCase(routeNameRaw);
 
     final String libraryPath = _getLibPath("routes");
-    final String routePath = _getPath("routes", routeNameRaw);
+    final String routePath = _getPath(
+      "routes",
+      routeNameRaw,
+      requiresImpl: false,
+    );
 
     final File libraryFile = File(libraryPath);
     final File routeFile = File(routePath);
@@ -28,16 +32,14 @@ class RouteCommand extends Command<String> {
       libraryFile.createSync(recursive: true);
       libraryFile.writeAsStringSync(
         <String>[
-          "library;",
-          "",
-          "export \"$routeNameRaw/$routeNameRaw.dart\";",
+          "export \"$routeNameRaw.dart\";",
         ].join("\n"),
       );
     } else {
       libraryFile.writeAsStringSync(
         <String>[
           "",
-          "export \"$routeNameRaw/$routeNameRaw.dart\";",
+          "export \"$routeNameRaw.dart\";",
         ].join("\n"),
         mode: FileMode.append,
       );

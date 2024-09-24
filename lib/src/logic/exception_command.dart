@@ -22,8 +22,6 @@ class ExceptionCommand extends Command<String> {
       exceptionFile
         ..createSync(recursive: true)
         ..writeAsString(<String>[
-          "library;",
-          "",
           "class ${exceptionName}Exception implements Exception {}",
         ].join("\n"));
     } else {

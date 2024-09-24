@@ -24,7 +24,11 @@ class UseCaseCommand extends Command<String> {
     final String useCaseNameRaw = argResults!.rest[0];
 
     final String libraryPath = _getLibPath("logic");
-    final String useCasePath = _getPath("logic/use_cases", useCaseNameRaw, requiresImpl: false);
+    final String useCasePath = _getPath(
+      "logic/use_cases",
+      useCaseNameRaw,
+      requiresImpl: false,
+    );
 
     final File libraryFile = File(libraryPath);
     final File useCaseFile = File(useCasePath);
@@ -38,14 +42,11 @@ class UseCaseCommand extends Command<String> {
     if (!libraryFile.existsSync()) {
       libraryFile.createSync(recursive: true);
 
-      libraryContent.addAll(<String>[
-        "library;",
-      ]);
+      _createBaseClass();
     }
 
     if (isPart) {
       libraryContent.addAll(<String>[
-        "",
         "part \"use_cases/$useCaseNameRaw.dart\";",
       ]);
     } else {
@@ -74,14 +75,38 @@ class UseCaseCommand extends Command<String> {
     }
 
     fileContent.addAll(<String>[
-      "class ${useCaseName}UseCase {",
-      "  Future<void> execute() async {}",
-      "}",
+      'import "dart:async";',
+      'import "use_case.dart";',
       "",
+      "class ${useCaseName}UseCase implements UseCase<>{",
+      "  FutureOr<> call() async {}",
+      "}",
     ]);
 
     useCaseFile.writeAsStringSync(fileContent.join("\n"));
 
     return "Use case file created at $useCasePath";
+  }
+
+  void _createBaseClass() {
+    final String baseClassPath = _getPath(
+      "logic/use_cases",
+      "use_case",
+      requiresImpl: false,
+    );
+
+    final File baseClassFile = File(baseClassPath);
+
+    baseClassFile.createSync(recursive: true);
+
+    final List<String> content = <String>[
+      'import "dart:async";',
+      "",
+      "abstract interface class UseCase<T> {",
+      "  FutureOr<T> call();",
+      "}"
+    ];
+
+    baseClassFile.writeAsStringSync(content.join("\n"));
   }
 }

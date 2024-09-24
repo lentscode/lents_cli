@@ -6,13 +6,13 @@ class DataSourceCommand extends Command<String> {
       "Creates a new data source, with an abstract class and an implementation.";
 
   @override
-  String get name => "data_source";
+  String get name => "data";
 
   @override
   FutureOr<String>? run() => _createDataSource();
 
   String _createDataSource() {
-    final String dataSourceNameRaw = "${argResults!.rest[0]}_data_source";
+    final String dataSourceNameRaw = argResults!.rest[0];
 
     final String libraryPath = _getLibPath("data");
     final String dataSourcePath = _getPath("data", dataSourceNameRaw);
@@ -30,8 +30,6 @@ class DataSourceCommand extends Command<String> {
       libraryFile.createSync(recursive: true);
       libraryFile.writeAsStringSync(
         <String>[
-          "library;",
-          "",
           "export \"$dataSourceNameRaw/$dataSourceNameRaw.dart\";",
         ].join("\n"),
       );
@@ -54,10 +52,10 @@ class DataSourceCommand extends Command<String> {
       <String>[
         "part \"$dataSourceNameRaw.impl.dart\";",
         "",
-        "abstract class $dataSourceName {",
-        "  $dataSourceName._();",
+        "abstract class ${dataSourceName}DataSource {",
+        "  ${dataSourceName}DataSource._();",
         "",
-        "  factory $dataSourceName() = _${dataSourceName}Impl;",
+        "  factory ${dataSourceName}DataSource() = _${dataSourceName}DataSource;",
         "}",
         ""
       ].join("\n"),
@@ -67,8 +65,8 @@ class DataSourceCommand extends Command<String> {
       <String>[
         "part of \"$dataSourceNameRaw.dart\";",
         "",
-        "class _${dataSourceName}Impl extends $dataSourceName {",
-        "  _${dataSourceName}Impl() : super._();",
+        "class _${dataSourceName}DataSource extends ${dataSourceName}DataSource {",
+        "  _${dataSourceName}DataSource() : super._();",
         "}",
         ""
       ].join("\n"),

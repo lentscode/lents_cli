@@ -31,8 +31,6 @@ class ModelCommand extends Command<String> {
       libraryFile.createSync(recursive: true);
       libraryFile.writeAsStringSync(
         <String>[
-          "library;",
-          "",
           "export \"$modelNameRaw/$modelNameRaw.dart\";",
         ].join("\n"),
       );
