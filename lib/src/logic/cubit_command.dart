@@ -59,6 +59,7 @@ class CubitCommand extends Command<String> {
           "",
           'export "$cubit/$cubitNameRaw.dart";',
         ].join("\n"),
+        mode: FileMode.append,
       );
     }
 

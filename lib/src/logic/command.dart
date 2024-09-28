@@ -8,6 +8,7 @@ import "package:args/command_runner.dart";
 part "cubit_command.dart";
 part "data_source_command.dart";
 part "exception_command.dart";
+part "logic_command.dart";
 part "model_command.dart";
 part "route_command.dart";
 part "use_case_command.dart";

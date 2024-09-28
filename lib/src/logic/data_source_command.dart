@@ -23,7 +23,7 @@ class DataSourceCommand extends Command<String> {
     final File dataSourceImplFile = File(dataSourceImplPath);
 
     if (dataSourceFile.existsSync() || dataSourceImplFile.existsSync()) {
-      throw StateError("Model or implementation file already exists.");
+      throw StateError("Data source or implementation file already exists.");
     }
 
     if (!libraryFile.existsSync()) {
