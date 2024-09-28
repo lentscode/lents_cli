@@ -23,3 +23,8 @@
 
 - Added CubitCommand
 - Updated other commands
+
+## 0.6.0
+
+- Added LogicCommand
+- Updated other commands
